@@ -18,3 +18,5 @@ ml/data/
 ml/raw/
 ml/data/
 *.zip
+
+!backend/model/*.pth

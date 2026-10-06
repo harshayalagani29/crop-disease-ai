@@ -51,8 +51,19 @@ function Detect({ t, lang }) {
 
   return (
     <section className="card">
-      <label>{t.upload}</label>
-      <input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e) => setFile(e.target.files[0])} />
+<label>{t.upload}</label>
+<div className="pick-row">
+  <label className="pick-btn">
+    📷 {t.takePhoto}
+    <input type="file" accept="image/*" capture="environment" hidden
+           onChange={(e) => setFile(e.target.files[0])} />
+  </label>
+  <label className="pick-btn">
+    🖼️ {t.gallery}
+    <input type="file" accept="image/jpeg,image/png,image/webp" hidden
+           onChange={(e) => setFile(e.target.files[0])} />
+  </label>
+</div>
       {file && <img className="preview" src={URL.createObjectURL(file)} alt="leaf preview" />}
       <input type="text" placeholder={t.location} value={location} onChange={(e) => setLocation(e.target.value)} />
       <button className="primary" disabled={!file || loading} onClick={analyze}>{loading ? t.analyzing : t.analyze}</button>
